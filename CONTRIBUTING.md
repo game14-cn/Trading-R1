@@ -1,28 +1,29 @@
-# Contributing
+# 参与贡献
 
-Issues and pull requests are welcome. Report a security problem
-[privately](https://github.com/TauricResearch/Trading-R1/security/advisories/new), not in an issue.
+简体中文 | [English](docs/en/CONTRIBUTING.md)
+
+欢迎提交 issue 和 pull request。安全问题请[私下报告](https://github.com/TauricResearch/Trading-R1/security/advisories/new)，不要发在 issue 里。
 
 ## Issues
 
-Use the issue forms. Give the output of `trading-r1 --version`, the model, what you did, what you
-expected and what happened. Remove keys and anything private first.
+请使用 issue 表单。提供 `trading-r1 --version` 的输出、所用模型、你做了什么、期望得到什么以及
+实际发生了什么。提交前请先移除 Key 以及任何隐私内容。
 
 ## Pull requests
 
-- Keep one change to a pull request, and say what it does and why.
-- Open an issue first for a large change or a new dependency.
-- Run `make lint` and `make smoke`. Both must pass.
+- 一个 pull request 只改一件事，并说明它做了什么以及为什么。
+- 较大的改动或新增依赖，请先开一个 issue。
+- 运行 `make lint` 和 `make smoke`，两者都必须通过。
 
-## Standards
+## 代码规范
 
-- Python 3.12 or later, formatted and linted by `ruff`. TypeScript formatted by Biome.
-- Every source file opens with the copyright and SPDX lines.
-- Layers import downward: `contract`, `state` and `providers`, then `runtime`, then `tools` and
-  `service`. `runtime` does not import `tools`.
-- Tools report expected failures with `ToolError` and do not raise anything else. Every price tool
-  goes through `tools/data/pricing.py`.
-- Comments say what the code does or a constraint a reader must know, not its history.
-- User-facing text is short and plain. Use no em dash, en dash or middle dot.
-- `tui/src/lib/events.gen.ts` and `assets/taxonomy.svg` are generated. Leave them to a maintainer.
-- Do not commit credentials or machine-specific paths and hosts.
+- Python 3.12 及以上，由 `ruff` 负责格式化与静态检查。TypeScript 由 Biome 格式化。
+- 每个源文件都以版权行和 SPDX 行开头。
+- 各层只向下导入：先是 `contract`、`state` 和 `providers`，然后是 `runtime`，再是 `tools` 和
+  `service`。`runtime` 不导入 `tools`。
+- 工具用 `ToolError` 报告可预期的失败，不抛出其他异常。每个价格类工具都要经过
+  `tools/data/pricing.py`。
+- 注释说明代码做什么，或读者必须知道的约束，不写它的历史。
+- 面向用户的文案简短平实。不使用长破折号、短破折号或间隔号。
+- `tui/src/lib/events.gen.ts` 和 `assets/taxonomy.svg` 是生成文件，交给维护者处理。
+- 不要提交凭据，也不要提交与具体机器相关的路径和主机名。
